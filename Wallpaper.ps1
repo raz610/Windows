@@ -20,7 +20,7 @@ Set-ItemProperty -Path $RegPath -Name WallPaper -Value C:\Temp\Wallpaper\tufin-i
 #task_scheduler
 $scriptPath = "C:\Temp\Wallpaper\Wallpaper.ps1"
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-File $scriptPath"
-$trigger = New-ScheduledTaskTrigger -AtLogOn
+$trigger = New-ScheduledTaskTrigger -AtLogOn -LogonType Interactive
 $taskName = "Wallpaper"  
 
 if (-not (Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue)) {
